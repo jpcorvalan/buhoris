@@ -3,31 +3,43 @@ package com.itpatagonia.buhoris.persistence.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "authors")
 @Getter
 @Setter
-@Table(name = "authors")
 public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     private Long id;
 
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "birth_date")
     private LocalDate birthDate;
-    private String nationality;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String biography;
-    private Boolean isActive;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<BookAuthor> books = new HashSet<>();
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = Boolean.TRUE;
 
-    public Author() {}
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books = new HashSet<>();
+
+    public Author() {
+    }
 }

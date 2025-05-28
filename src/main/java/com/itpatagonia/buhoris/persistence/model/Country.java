@@ -7,21 +7,21 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "languages")
-public class Language {
+@Table(name = "countries")
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 2, unique = true, nullable = false)
-    private String code;
-
     @Column(nullable = false)
     private String name;
 
-    @Column(name = "is_active", nullable = false)
-    private Boolean isActive = Boolean.TRUE;
+    @Column(name = "iso_code3", length = 3, nullable = false, unique = true)
+    private String isoCode3;
 
-    public Language() {}
+    @Column(name = "numeric_code", nullable = false)
+    private Integer numericCode;
+
+    public Country() {}
 }

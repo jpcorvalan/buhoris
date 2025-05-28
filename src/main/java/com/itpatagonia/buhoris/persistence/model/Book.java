@@ -16,23 +16,60 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
-    private Publisher publisher;     // relación @ManyToOne
-    private Language language;       // relación @ManyToOne
+
+    @Column(length = 13, unique = true)
     private String isbn;
+
+    @Column(name = "publication_date")
     private LocalDate publicationDate;
+
     private Integer pages;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String summary;
-    private Boolean isActive;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<BookAuthor> authors = new HashSet<>();           // relación @ManyToMany
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = Boolean.FALSE;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<BookGenre> genres = new HashSet<>();             // relación @ManyToMany
+    // ------ Relaciones ------
+
+    @OneToOne(mappedBy = "book",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            optional = false)
+    private BookStock stock;
+
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    private Set<Loan> loans = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "publisher_id", nullable = false)
+    private Publisher publisher;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "language_id", nullable = false)
+    private Language language;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_authors",
+            joinColumns =  @JoinColumn(name = "book_id"),
+            inverseJoinColumns =  @JoinColumn(name = "author_id")
+    )
+    private Set<Author> authors = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_genres",
+            joinColumns =  @JoinColumn(name = "book_id"),
+            inverseJoinColumns =  @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres = new HashSet<>();
 
     public Book() {}
 }
