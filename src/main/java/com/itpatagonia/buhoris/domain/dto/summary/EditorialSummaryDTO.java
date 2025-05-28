@@ -1,11 +1,12 @@
 package com.itpatagonia.buhoris.domain.dto.summary;
 
-public class AutorSummaryDTO {
+import java.time.LocalDate;
+
+public class EditorialSummaryDTO {
     private String nombre;
-    private String apellido;
     private PaisSummaryDTO pais;
 
-    public AutorSummaryDTO() {
+    public EditorialSummaryDTO() {
     }
 
     public String getNombre() {
@@ -16,14 +17,6 @@ public class AutorSummaryDTO {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public PaisSummaryDTO getPais() {
         return pais;
     }
@@ -32,4 +25,3 @@ public class AutorSummaryDTO {
         this.pais = pais;
     }
 }
-

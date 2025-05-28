@@ -6,16 +6,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import java.util.Set;
-
 @Mapper(componentModel = "spring")
 public interface LanguageMapper {
 
     @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "code", target = "codigo"),
-            @Mapping(source = "name", target = "nombre"),
+            @Mapping(source = "code",      target = "codigo"),
+            @Mapping(source = "name",      target = "nombre"),
+            @Mapping(source = "isActive",  target = "activo")
     })
-    IdiomaDTO toDTO(Language language);
-    Set<IdiomaDTO> toList(Set<Language> languages);
+    IdiomaDTO toDto(Language language);
 }
+

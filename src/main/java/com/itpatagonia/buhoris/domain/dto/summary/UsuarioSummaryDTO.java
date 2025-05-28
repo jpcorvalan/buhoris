@@ -1,11 +1,15 @@
 package com.itpatagonia.buhoris.domain.dto.summary;
 
-public class AutorSummaryDTO {
+import com.itpatagonia.buhoris.domain.dto.full.RolDTO;
+
+import java.time.LocalDate;
+
+public class UsuarioSummaryDTO {
     private String nombre;
     private String apellido;
-    private PaisSummaryDTO pais;
+    private RolDTO rol;
 
-    public AutorSummaryDTO() {
+    public UsuarioSummaryDTO() {
     }
 
     public String getNombre() {
@@ -24,12 +28,12 @@ public class AutorSummaryDTO {
         this.apellido = apellido;
     }
 
-    public PaisSummaryDTO getPais() {
-        return pais;
+    public RolDTO getRol() {
+        return rol;
     }
 
-    public void setPais(PaisSummaryDTO pais) {
-        this.pais = pais;
+    public void setRol(RolDTO rol) {
+        this.rol = rol;
     }
 }
 

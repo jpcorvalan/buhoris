@@ -4,6 +4,7 @@ public class IdiomaDTO {
     private Long id;
     private String codigo;
     private String nombre;
+    private Boolean activo;
 
     public IdiomaDTO() {
     }
@@ -31,4 +32,13 @@ public class IdiomaDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 }
+

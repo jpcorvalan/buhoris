@@ -7,17 +7,17 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import java.util.Set;
-
-@Mapper(componentModel = "spring", uses = {BookSummaryMapper.class})
+@Mapper(
+        componentModel = "spring",
+        uses = {BookSummaryMapper.class }
+)
 public interface GenreMapper {
 
     @Mappings({
-            @Mapping(source = "id", target = "id"),
-            @Mapping(source = "name", target = "nombre"),
-            @Mapping(source = "description", target = "descripcion"),
-            @Mapping(source = "books", target = "libros")
+            @Mapping(source = "name",       target = "nombre"),
+            @Mapping(source = "description",target = "descripcion"),
+            @Mapping(source = "isActive",   target = "activo"),
+            @Mapping(source = "books",      target = "libros")
     })
-    GeneroDTO toDTO(Genre genre);
-    Set<GeneroDTO> toList(Set<Genre> genres);
+    GeneroDTO toDto(Genre genre);
 }

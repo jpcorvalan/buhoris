@@ -1,14 +1,11 @@
 package com.itpatagonia.buhoris.domain.dto.summary;
 
-import com.itpatagonia.buhoris.domain.dto.full.IdiomaDTO;
-
+import java.time.LocalDate;
 import java.util.Set;
 
 public class LibroSummaryDTO {
     private String titulo;
-    private Set<AutorSummaryDTO> autores;
-    private Set<GeneroSummaryDTO> generos;
-    private IdiomaDTO idioma;
+    private String isbn;
 
     public LibroSummaryDTO() {
     }
@@ -21,27 +18,12 @@ public class LibroSummaryDTO {
         this.titulo = titulo;
     }
 
-    public Set<AutorSummaryDTO> getAutores() {
-        return autores;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setAutores(Set<AutorSummaryDTO> autores) {
-        this.autores = autores;
-    }
-
-    public Set<GeneroSummaryDTO> getGeneros() {
-        return generos;
-    }
-
-    public void setGeneros(Set<GeneroSummaryDTO> generos) {
-        this.generos = generos;
-    }
-
-    public IdiomaDTO getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(IdiomaDTO idioma) {
-        this.idioma = idioma;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }
+

@@ -8,6 +8,7 @@ public class GeneroDTO {
     private Long id;
     private String nombre;
     private String descripcion;
+    private Boolean activo;
     private Set<LibroSummaryDTO> libros;
 
     public GeneroDTO() {
@@ -35,6 +36,14 @@ public class GeneroDTO {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public Set<LibroSummaryDTO> getLibros() {

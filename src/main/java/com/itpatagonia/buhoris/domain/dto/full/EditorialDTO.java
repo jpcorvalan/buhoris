@@ -1,13 +1,16 @@
 package com.itpatagonia.buhoris.domain.dto.full;
 
+import com.itpatagonia.buhoris.domain.dto.summary.PaisSummaryDTO;
+
 import java.time.LocalDate;
 
 public class EditorialDTO {
     private Long id;
     private String nombre;
-    private String pais;
+    private PaisSummaryDTO pais;
     private String sitioWeb;
     private LocalDate fechaFundacion;
+    private Boolean activo;
 
     public EditorialDTO() {
     }
@@ -28,15 +31,7 @@ public class EditorialDTO {
         this.nombre = nombre;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getSitioWeb() {
+     public String getSitioWeb() {
         return sitioWeb;
     }
 
@@ -50,5 +45,21 @@ public class EditorialDTO {
 
     public void setFechaFundacion(LocalDate fechaFundacion) {
         this.fechaFundacion = fechaFundacion;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public PaisSummaryDTO getPais() {
+        return pais;
+    }
+
+    public void setPais(PaisSummaryDTO pais) {
+        this.pais = pais;
     }
 }
